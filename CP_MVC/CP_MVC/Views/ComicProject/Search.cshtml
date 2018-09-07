@@ -1,0 +1,32 @@
+﻿@model List<CP_MVC.Models.Book>
+@{
+    ViewBag.Title = "Search";
+}
+
+<div class="container">
+    <h1><b>搜尋結果如下</b></h1>
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th class="col-md-4">&nbsp;</th>
+                <th class="col-md-3">書名</th>
+                <th class="col-md-3">作者</th>
+                <th class="col-md-3">詳細資訊</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model) {
+            <tr>
+                <td><img src="/image/@item.BookPicture" /></td>
+                <td><b>@item.BookName</b></td>
+                <td><b>@item.BookAuthor</b></td>
+                <td><a href="/ComicProject/BookDetail/@item.BookID" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-book" aria-hidden="true"></span></a></td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+

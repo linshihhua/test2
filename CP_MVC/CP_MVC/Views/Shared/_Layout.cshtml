@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Comic</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        /* Remove the navbar's default margin-bottom and rounded borders */
+        .navbar {
+            margin-bottom: 0;
+            border-radius: 0;
+        }
+
+        /* Add a gray background color and some padding to the footer */
+        footer {
+            background-color: #f2f2f2;
+            padding: 25px;
+        }
+
+        .jumbotron {
+            margin-bottom: 0;
+            background-position: center;
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="jumbotron" style="background-image: url(/image/back.png)">
+        <h1>歡迎來到本網站</h1>
+        <p>
+            @(Session["Login"].ToString() == "true" ? Session["MemberName"].ToString() + "歡迎回來" : "請登入使用本網站")
+        </p>
+    </div>
+
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <ul class="nav navbar-nav">
+                <li><a href="/ComicProject/Index"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+                @*<li><a href="/ComicProject/Register"><span class="glyphicon glyphicon-plus"></span> Register</a></li>*@
+                <li><a href="/ComicProject/@(Session["Login"].ToString() == "true"? "Logout": "Login" )"><span class="glyphicon glyphicon-log-@(Session["Login"].ToString() == "true"? "out": "in")"></span> @(Session["Login"].ToString() == "true"? "Sign out":"Sign in")</a></li>
+                <li><a href="/ComicProject/Member"><span class="glyphicon glyphicon-user"></span> Member</a></li>
+            </ul>
+            <form class="navbar-form navbar-left" action="/ComicProject/Search" method="post">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Search" id="Search" name="Search">
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+        </div>
+    </nav>
+
+
+    @RenderBody()
+
+
+    <hr />
+    <footer class="container-fluid text-center">
+        <span class="glyphicon glyphicon-user" aria-hidden="true" style="font-size:25px"></span>&nbsp;&nbsp;&nbsp;&nbsp;
+        <span class="glyphicon glyphicon-envelope" aria-hidden="true" style="font-size:25px"></span>&nbsp;&nbsp;&nbsp;&nbsp;
+        <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true" style="font-size:25px"></span>
+    </footer>
+
+</body>
+</html>

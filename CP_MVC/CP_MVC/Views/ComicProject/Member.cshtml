@@ -1,0 +1,43 @@
+﻿@model CP_MVC.Models.MemberView
+@{
+    ViewBag.Title = "Member";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h2 class="text-center"><b>個人資料</b>&nbsp;&nbsp;<a class="btn btn-success btn-sm" href="/ComicProject/Edit"><span class="glyphicon glyphicon-edit"></span> 編輯</a></h2>
+            <ul class="list-group">
+                <li class="list-group-item"><b>帳號: @Model.member.MemberName</b></li>
+                <li class="list-group-item"><b>密碼: @Model.member.MemberPassword</b></li>
+                <li class="list-group-item"><b>Email: @Model.member.MemberEmail</b></li>
+                <li class="list-group-item"><b>性別: @Model.member.MemberSex</b></li>
+                <li class="list-group-item"><b>會員身分: @Model.member.MemberStatus</b></li>
+            </ul>
+        </div>
+        <div class="col-md-6">
+            <h2 class="text-center"><b>已收藏列表</b></h2>
+
+
+
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th class="col-md-8">漫畫名稱</th>
+                        <th class="col-md-4">詳細資訊</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.BookList) {
+                        <tr>
+                            <td><b>@item.BookName</b></td>
+                            <td><a href="/ComicProject/BookDetail/@item.BookID" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a></td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>

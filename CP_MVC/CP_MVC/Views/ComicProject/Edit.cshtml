@@ -1,0 +1,65 @@
+﻿@model CP_MVC.Models.Member
+@{
+    ViewBag.Title = "Edit";
+}
+
+<br />
+<br />
+<br />
+<br />
+<br />
+
+<form class="form-horizontal" action="" method="post">
+    <fieldset>
+
+        <!-- Text input-->
+        <input type="hidden" id="MemberID" name="MemberID" value="@Model.MemberID" />
+        <input type="hidden" id="MemberName" name="MemberName" value="@Model.MemberName" />
+        <input type="hidden" id="MemberStatus" name="MemberStatus" value="@Model.MemberStatus" />
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="Password">密碼</label>
+            <div class="col-md-4">
+                <input id="MemberPassword" name="MemberPassword" value ="@Model.MemberPassword"type="text" placeholder="" class="form-control input-md" required="">
+
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="Email">Email</label>
+            <div class="col-md-4">
+                <input id="MemberEmail" name="MemberEmail" value="@Model.MemberEmail" type="text" placeholder="" class="form-control input-md" required="">
+
+            </div>
+        </div>
+
+        <!-- Multiple Radios (inline) -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="Sex">性別</label>
+            <div class="col-md-4">
+                <label class="radio-inline" for="Sex-0">
+                    <input type="radio" name="MemberSex" id="MemberSex" value="man" @(Model.MemberSex == "man" ? "checked":"")>
+                    男
+                </label>
+                <label class="radio-inline" for="Sex-1">
+                    <input type="radio" name="MemberSex" id="MemberSex" value="woman" @(Model.MemberSex == "woman" ? "checked":"")>
+                    女
+                </label>
+                <label class="radio-inline" for="Sex-2">
+                    <input type="radio" name="MemberSex" id="MemberSex" value="else" @(Model.MemberSex == "else" ? "checked":"")>
+                    其他
+                </label>
+            </div>
+        </div>
+
+        <!-- Button (Double) -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="OkOrCancelButton"></label>
+            <div class="col-md-8">
+                <button id="OkOrCancelButton" name="OkOrCancelButton" value="Ok" class="btn btn-success">送出</button>
+                <button id="OkOrCancelButton" name="OkOrCancelButton" value="Cancel" class="btn btn-danger">取消</button>
+            </div>
+        </div>
+
+    </fieldset>
+</form>

@@ -1,0 +1,75 @@
+﻿@model CP_MVC.Models.BookDetailView
+@{
+    ViewBag.Title = "BookDetail";
+}
+
+<div class="container-fluid">
+    <div row>
+
+        <div class="col-md-2">
+            <div class="row"><h2><b>@Model.Book.BookName</b></h2></div>
+            <div class="row"><img src="/image/@Model.Book.BookPicture" /></div>
+
+        </div>
+
+        <div class="col-md-4">
+            <h2 class="text-center full"><b>詳細資訊</b></h2>
+            <ul class="list-group">
+                <li class="list-group-item"><b>書名: @Model.Book.BookName</b></li>
+                <li class="list-group-item"><b>作者: @Model.Book.BookAuthor</b></li>
+                <li class="list-group-item"><b>總集數: @Model.Book.BookTotalEpisodes</b></li>
+                <li class="list-group-item"><b>是否完結: @Model.Book.BookEndOrNot</b></li>
+            </ul>
+        </div>
+
+        <div class="col-md-3" style="@(Session["Login"].ToString() == "true"? "":"display:none")">
+            <h2 class="text-center full"><b>已擁有集數</b></h2>
+
+
+
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th class="col-md-6">集數</th>
+                        <th class="col-md-6">點擊移除</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.HaveList)
+                    {
+                    <tr>
+                        <td><b>@item.BookEpisode</b></td>
+                        <td><a href="/ComicProject/Remove/@item.BookDetailEpisodeID" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-3">
+            <h2 class="text-center full"><b>尚未擁有集數</b></h2>
+
+
+
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th class="col-md-6">集數</th>
+                        <th class="col-md-6">點擊加入</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.NotHaveList)
+                    {
+                    <tr>
+                        <td><b>@item.BookEpisode</b></td>
+                        <td><a href="/ComicProject/Add/@item.BookDetailEpisodeID" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a></td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+</div>
+

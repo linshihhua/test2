@@ -1,0 +1,44 @@
+﻿@model CP_MVC.Models.Member
+@{
+    ViewBag.Title = "Login";
+}
+
+<br />
+<br />
+<br />
+<br />
+<br />
+
+<form class="form-horizontal" action="" method="post">
+    <fieldset>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="MemberName">帳號</label>
+            <div class="col-md-4">
+                <input id="MemberName" name="MemberName" value="@Model.MemberName" type="text" placeholder="" class="form-control input-md" required="">
+
+            </div>
+        </div>
+
+        <!-- Password input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="MemberPassword">密碼</label>
+            <div class="col-md-4">
+                <input id="MemberPassword" name="MemberPassword" type="password" placeholder="" class="form-control input-md" required="">
+
+            </div>
+        </div>
+
+        <!-- Button (Double) -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="OkOrCancelButton"></label>
+            <div class="col-md-8">
+                <button id="OkOrCancelButton" name="OkOrCancelButton" class="btn btn-success">登入</button>
+                <button id="OkOrCancelButton" name="OkOrCancelButton" class="btn btn-danger">取消</button>
+            </div>
+        </div>
+
+    </fieldset>
+</form>
+
